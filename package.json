@@ -12,6 +12,10 @@
   ],
   "author": "Mark Manders <mmjmanders@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mmjmanders/ng-iban.git"
+  },
   "devDependencies": {
     "coffee-script": "^1.7.1",
     "grunt": "^0.4.5",
