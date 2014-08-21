@@ -17,9 +17,9 @@ describe 'Directive: iban', ->
     form = scope.form
 
   it 'optional should pass with empty IBAN', ->
-    form.optional.$setViewValue ''
+    form.optional.$setViewValue undefined
     scope.$digest()
-    expect(scope.optional).toEqual ''
+    expect(scope.optional).toEqual undefined
     expect(form.optional.$valid).toBe true
 
   it 'optional should pass with valid IBAN', ->
@@ -31,11 +31,11 @@ describe 'Directive: iban', ->
   it 'optional should fail with invalid IBAN', ->
     form.optional.$setViewValue 'NL87 INGB 0002 4455 88'
     scope.$digest()
-    expect(scope.optional).toEqual 'NL87 INGB 0002 4455 88'
+    expect(scope.optional).toEqual undefined
     expect(form.optional.$valid).toBe false
 
   it 'required should fail with empty IBAN', ->
-    form.iban.$setViewValue ''
+    form.iban.$setViewValue undefined
     scope.$digest()
     expect(scope.iban).toEqual undefined
     expect(form.iban.$valid).toBe false
@@ -49,5 +49,5 @@ describe 'Directive: iban', ->
   it 'required should fail with invalid IBAN', ->
     form.iban.$setViewValue 'NL87 INGB 0002 4455 88'
     scope.$digest()
-    expect(scope.iban).toEqual 'NL87 INGB 0002 4455 88'
+    expect(scope.iban).toEqual undefined
     expect(form.iban.$valid).toBe false

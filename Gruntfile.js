@@ -94,13 +94,14 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('test', [
-    'clean',
+    'clean:tmp',
     'coffee',
     'connect:test',
     'karma'
   ]);
 
   grunt.registerTask('default', [
+    'clean:dist',
     'test',
     'ngAnnotate',
     'uglify'
