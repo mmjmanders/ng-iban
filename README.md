@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mmjmanders/ng-iban.svg?branch=master)](https://travis-ci.org/mmjmanders/ng-iban)
+
 # ng-iban - validate input fields as IBAN
 The goals is to provide an easy way to validate an input field as an IBAN number with [AngularJS](https://angularjs.org/).
 
