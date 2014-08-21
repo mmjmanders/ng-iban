@@ -1,6 +1,6 @@
 {
   "name": "ng-iban",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "IBAN directive for AngularJS",
   "main": "./dist/ng-iban.js",
   "scripts": {
@@ -15,6 +15,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/mmjmanders/ng-iban.git"
+  },
+  "bugs": "https://github.com/mmjmanders/ng-iban/issues",
+  "engines": {
+    "node": ">=0.10.0"
   },
   "devDependencies": {
     "coffee-script": "^1.7.1",
