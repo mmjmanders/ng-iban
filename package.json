@@ -16,6 +16,10 @@
     "type": "git",
     "url": "https://github.com/mmjmanders/ng-iban.git"
   },
+  "bugs": "https://github.com/mmjmanders/ng-iban/issues",
+  "engines": {
+    "node": ">=0.10.0"
+  },
   "devDependencies": {
     "coffee-script": "^1.7.1",
     "grunt": "^0.4.5",
