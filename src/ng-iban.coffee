@@ -95,7 +95,13 @@ angular
       ctrl.$parsers.unshift (value) ->
         valid = if value? then isValidIban value else true
         ctrl.$setValidity 'iban', valid
-        if valid then value else undefined
+        if valid
+          parsed = if value? then value.toUpperCase().replace /\s/g, '' else undefined
+          if parsed isnt value
+            ctrl.$setViewValue parsed
+            ctrl.$render()
+          parsed
+        else undefined
 
       ctrl.$formatters.unshift (value) ->
         valid = if value? then isValidIban value else true
