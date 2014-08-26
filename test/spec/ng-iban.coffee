@@ -30,7 +30,7 @@ describe 'Directive: iban', ->
   it 'optional should pass with valid IBAN', ->
     form.optional.$setViewValue 'NL91 ABNA 0417 1643 00'
     scope.$digest()
-    expect(scope.optional).toEqual 'NL91 ABNA 0417 1643 00'
+    expect(scope.optional).toEqual 'NL91ABNA0417164300'
     expect(form.optional.$valid).toBe true
 
   it 'optional should fail with invalid IBAN', ->
@@ -48,7 +48,7 @@ describe 'Directive: iban', ->
   it 'required should pass with valid IBAN', ->
     form.iban.$setViewValue 'NL91 ABNA 0417 1643 00'
     scope.$digest()
-    expect(scope.iban).toEqual 'NL91 ABNA 0417 1643 00'
+    expect(scope.iban).toEqual 'NL91ABNA0417164300'
     expect(form.iban.$valid).toBe true
 
   it 'required should fail with invalid IBAN', ->
@@ -66,7 +66,7 @@ describe 'Directive: iban', ->
   it 'country should pass with valid IBAN', ->
     form.country.$setViewValue 'NL91 ABNA 0417 1643 00'
     scope.$digest()
-    expect(scope.country).toEqual 'NL91 ABNA 0417 1643 00'
+    expect(scope.country).toEqual 'NL91ABNA0417164300'
     expect(form.country.$valid).toBe true
 
   it 'country should fail with invalid IBAN', ->
