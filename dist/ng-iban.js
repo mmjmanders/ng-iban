@@ -98,11 +98,16 @@ angular.module('mm.iban', ['ng']).constant('countries', {
         return __modulo(parseInt(remainder, 10), 97) === 1;
       };
       ctrl.$parsers.unshift(function(value) {
-        var valid;
+        var parsed, valid;
         valid = value != null ? isValidIban(value) : true;
         ctrl.$setValidity('iban', valid);
         if (valid) {
-          return value;
+          parsed = value != null ? value.toUpperCase().replace(/\s/g, '') : void 0;
+          if (parsed !== value) {
+            ctrl.$setViewValue(parsed);
+            ctrl.$render();
+          }
+          return parsed;
         } else {
           return void 0;
         }
