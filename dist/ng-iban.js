@@ -78,7 +78,7 @@ angular.module('mm.iban', ['ng']).constant('countries', {
         A = 'A'.charCodeAt(0);
         Z = 'Z'.charCodeAt(0);
         iban = value.toUpperCase().replace(/\s/g, '');
-        if (attrs.ngIban !== '' && (!attrs.ngIban in countries || !countries[attrs.ngIban].test(iban))) {
+        if (attrs.ngIban !== '' && (!!!(attrs.ngIban in countries) || !countries[attrs.ngIban].test(iban))) {
           return false;
         }
         iban = iban.substr(4) + iban.substr(0, 4);

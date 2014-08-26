@@ -77,7 +77,7 @@ angular
         Z = 'Z'.charCodeAt 0
 
         iban = value.toUpperCase().replace /\s/g, ''
-        return false if attrs.ngIban isnt '' and (not attrs.ngIban of countries or not countries[attrs.ngIban].test iban)
+        return false if attrs.ngIban isnt '' and (not !!(attrs.ngIban of countries) or not countries[attrs.ngIban].test iban)
 
         iban = iban.substr(4) + iban.substr 0, 4
 
