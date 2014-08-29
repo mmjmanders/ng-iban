@@ -72,11 +72,16 @@ angular
     restrict: 'A'
     require: 'ngModel'
     link: (scope, elem, attrs, ctrl) ->
+      parseIban = (value) ->
+        if value? then value.toUpperCase().replace /\s/g, '' else undefined
+
       isValidIban = (value) ->
+        return true if not value?
+
         A = 'A'.charCodeAt 0
         Z = 'Z'.charCodeAt 0
 
-        iban = value.toUpperCase().replace /\s/g, ''
+        iban = parseIban(value)
         return false if attrs.ngIban isnt '' and (not !!(attrs.ngIban of countries) or not countries[attrs.ngIban].test iban)
 
         iban = iban.substr(4) + iban.substr 0, 4
@@ -93,10 +98,10 @@ angular
         parseInt(remainder, 10) %% 97 is 1
 
       ctrl.$parsers.unshift (value) ->
-        valid = if value? then isValidIban value else true
+        valid = isValidIban value
         ctrl.$setValidity 'iban', valid
         if valid
-          parsed = if value? then value.toUpperCase().replace /\s/g, '' else undefined
+          parsed = parseIban value
           if parsed isnt value
             ctrl.$setViewValue parsed
             ctrl.$render()
@@ -104,6 +109,11 @@ angular
         else undefined
 
       ctrl.$formatters.unshift (value) ->
-        valid = if value? then isValidIban value else true
+        valid = isValidIban value
         ctrl.$setValidity 'iban', valid
-        value
+        if valid
+          parsed = parseIban value
+          if parsed isnt value
+            scope[attrs.ngModel] = parsed
+          parsed
+        else value
