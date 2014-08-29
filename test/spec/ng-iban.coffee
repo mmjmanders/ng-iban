@@ -74,3 +74,15 @@ describe 'Directive: iban', ->
     scope.$digest()
     expect(scope.country).toEqual undefined
     expect(form.country.$valid).toBe false
+
+  it 'model updates to valid IBAN', ->
+    scope.iban = 'NL91 ABNA 0417 1643 00'
+    scope.$digest()
+    expect(scope.iban).toEqual 'NL91ABNA0417164300'
+    expect(form.iban.$valid).toBe true
+
+  it 'model updates to invalid IBAN', ->
+    scope.iban = 'NL90 ABNA 0417 1643 00'
+    scope.$digest()
+    expect(scope.iban).toEqual 'NL90 ABNA 0417 1643 00'
+    expect(form.iban.$valid).toBe false

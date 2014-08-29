@@ -72,12 +72,22 @@ angular.module('mm.iban', ['ng']).constant('countries', {
     restrict: 'A',
     require: 'ngModel',
     link: function(scope, elem, attrs, ctrl) {
-      var isValidIban;
+      var isValidIban, parseIban;
+      parseIban = function(value) {
+        if (value != null) {
+          return value.toUpperCase().replace(/\s/g, '');
+        } else {
+          return void 0;
+        }
+      };
       isValidIban = function(value) {
         var A, Z, block, iban, remainder;
+        if (value == null) {
+          return true;
+        }
         A = 'A'.charCodeAt(0);
         Z = 'Z'.charCodeAt(0);
-        iban = value.toUpperCase().replace(/\s/g, '');
+        iban = parseIban(value);
         if (attrs.ngIban !== '' && (!!!(attrs.ngIban in countries) || !countries[attrs.ngIban].test(iban))) {
           return false;
         }
@@ -99,10 +109,10 @@ angular.module('mm.iban', ['ng']).constant('countries', {
       };
       ctrl.$parsers.unshift(function(value) {
         var parsed, valid;
-        valid = value != null ? isValidIban(value) : true;
+        valid = isValidIban(value);
         ctrl.$setValidity('iban', valid);
         if (valid) {
-          parsed = value != null ? value.toUpperCase().replace(/\s/g, '') : void 0;
+          parsed = parseIban(value);
           if (parsed !== value) {
             ctrl.$setViewValue(parsed);
             ctrl.$render();
@@ -113,10 +123,18 @@ angular.module('mm.iban', ['ng']).constant('countries', {
         }
       });
       return ctrl.$formatters.unshift(function(value) {
-        var valid;
-        valid = value != null ? isValidIban(value) : true;
+        var parsed, valid;
+        valid = isValidIban(value);
         ctrl.$setValidity('iban', valid);
-        return value;
+        if (valid) {
+          parsed = parseIban(value);
+          if (parsed !== value) {
+            scope[attrs.ngModel] = parsed;
+          }
+          return parsed;
+        } else {
+          return value;
+        }
       });
     }
   };
