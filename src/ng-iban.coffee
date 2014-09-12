@@ -2,7 +2,7 @@
 
 angular
   .module 'mm.iban', ['ng']
-  .constant 'countries',
+  .constant 'ngIbanCountries',
     AL: /^AL[0-9]{2}[0-9]{8}[A-Z0-9]{16}$/
     AD: /^AD[0-9]{2}[0-9]{4}[0-9]{4}[A-Z0-9]{12}$/
     AT: /^AT[0-9]{2}[0-9]{5}[0-9]{11}$/
@@ -69,7 +69,7 @@ angular
     AE: /^AE[0-9]{2}[0-9]{3}[0-9]{16}$/
     GB: /^GB[0-9]{2}[A-Z]{4}[0-9]{6}[0-9]{8}$/
     VG: /^VG[0-9]{2}[A-Z]{4}[0-9]{16}$/
-  .directive 'ngIban', (countries) ->
+  .directive 'ngIban', (ngIbanCountries) ->
     restrict: 'A'
     require: 'ngModel'
     link: (scope, elem, attrs, ctrl) ->
@@ -83,7 +83,7 @@ angular
         Z = 'Z'.charCodeAt 0
 
         iban = parseIban(value)
-        return false if attrs.ngIban isnt '' and (not !!(attrs.ngIban of countries) or not countries[attrs.ngIban].test iban)
+        return false if attrs.ngIban isnt '' and (not !!(attrs.ngIban of ngIbanCountries) or not ngIbanCountries[attrs.ngIban].test iban)
 
         iban = iban.substr(4) + iban.substr 0, 4
 

@@ -1,6 +1,6 @@
 {
   "name": "ng-iban",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "IBAN directive for AngularJS",
   "main": "./dist/ng-iban.js",
   "scripts": {
