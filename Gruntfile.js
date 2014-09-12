@@ -40,9 +40,6 @@ module.exports = function (grunt) {
     },
 
     coffee: {
-      options: {
-        bare: true
-      },
       src: {
         files: [{
           cwd: 'src',
@@ -64,9 +61,6 @@ module.exports = function (grunt) {
     },
 
     ngAnnotate: {
-      options: {
-        singleQuotes: true
-      },
       dist: {
         files: [{
           cwd: '.tmp',
