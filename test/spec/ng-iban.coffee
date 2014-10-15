@@ -40,7 +40,7 @@ describe 'Directive: iban', ->
     expect(form.optional.$valid).toBe false
 
   it 'required should fail with empty IBAN', ->
-    form.iban.$setViewValue undefined
+    form.iban.$setViewValue ''
     scope.$digest()
     expect(scope.iban).toEqual undefined
     expect(form.iban.$valid).toBe false
