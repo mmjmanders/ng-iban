@@ -282,9 +282,6 @@
         };
         isValidIban = function(value) {
           var A, Z, block, iban, remainder;
-          if (value == null) {
-            return true;
-          }
           A = 'A'.charCodeAt(0);
           Z = 'Z'.charCodeAt(0);
           iban = parseIban(value);
@@ -309,31 +306,35 @@
         };
         ctrl.$parsers.unshift(function(viewValue) {
           var parsed, valid;
-          valid = isValidIban(viewValue);
-          ctrl.$setValidity('iban', valid);
-          if (valid) {
-            parsed = parseIban(viewValue);
-            if (parsed !== viewValue) {
-              ctrl.$setViewValue(parsed);
-              ctrl.$render();
+          if (viewValue != null) {
+            valid = isValidIban(viewValue);
+            ctrl.$setValidity('iban', valid);
+            if (valid) {
+              parsed = parseIban(viewValue);
+              if (parsed !== viewValue) {
+                ctrl.$setViewValue(parsed);
+                ctrl.$render();
+              }
+              return parsed;
+            } else {
+              return void 0;
             }
-            return parsed;
-          } else {
-            return void 0;
           }
         });
         return ctrl.$formatters.unshift(function(modelValue) {
           var parsed, valid;
-          valid = isValidIban(modelValue);
-          ctrl.$setValidity('iban', valid);
-          if (valid) {
-            parsed = parseIban(modelValue);
-            if (parsed !== modelValue) {
-              scope[attrs.ngModel] = parsed;
+          if (modelValue != null) {
+            valid = isValidIban(modelValue);
+            ctrl.$setValidity('iban', valid);
+            if (valid) {
+              parsed = parseIban(modelValue);
+              if (parsed !== modelValue) {
+                scope[attrs.ngModel] = parsed;
+              }
+              return parsed;
+            } else {
+              return modelValue;
             }
-            return parsed;
-          } else {
-            return modelValue;
           }
         });
       }
