@@ -2,6 +2,8 @@ box: wercker/nodejs
 build:
   steps:
     - npm-install
+    - npm-install:
+        options: bower
     - plasticine/bower-install@0.0.4:
         tasks: bower-install
     - wercker/grunt@1.0.0:
