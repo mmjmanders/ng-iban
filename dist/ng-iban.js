@@ -282,6 +282,9 @@
         };
         isValidIban = function(value) {
           var A, Z, block, iban, remainder;
+          if (!(attrs.required || value)) {
+            return true;
+          }
           A = 'A'.charCodeAt(0);
           Z = 'Z'.charCodeAt(0);
           iban = parseIban(value);
