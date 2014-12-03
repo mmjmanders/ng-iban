@@ -4,4 +4,4 @@ build:
     - npm-install
     - olger/yeoman-bower-install
     - grunt:
-        tasks: build
+        tasks: default
