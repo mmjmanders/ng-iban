@@ -21,10 +21,16 @@ describe 'Directive: iban', ->
       '</form>')(scope)
     form = scope.form
 
-  it 'optional should pass with empty IBAN', ->
+  it 'optional should pass with empty (undefined) IBAN', ->
     form.optional.$setViewValue undefined
     scope.$digest()
     expect(scope.optional).toEqual undefined
+    expect(form.optional.$valid).toBe true
+
+  it 'optional should pass with empty ("") IBAN', ->
+    form.optional.$setViewValue ""
+    scope.$digest()
+    expect(scope.optional).toEqual ""
     expect(form.optional.$valid).toBe true
 
   it 'optional should pass with valid IBAN', ->
