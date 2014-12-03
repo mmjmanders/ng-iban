@@ -209,6 +209,7 @@ angular
         if value? then value.toUpperCase().replace /\s/g, '' else undefined
 
       isValidIban = (value) ->
+        return true if not(attrs.required or value)
         A = 'A'.charCodeAt 0
         Z = 'Z'.charCodeAt 0
 
