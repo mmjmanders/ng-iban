@@ -16,8 +16,7 @@ describe 'Directive: iban', ->
     compile('<form name="form">' +
       '<input name="iban" ng-model="iban" ng-iban required/>' +
       '<input name="optional" ng-model="optional" ng-iban/>' +
-      '<input name="invalidcountry" ng-model="invalidcountry" ng-iban="XX"/>' +
-      '<input name="country" ng-model="country" ng-iban="NL"/>' +
+      '<input name="country" ng-model="country" ng-iban="NL"/>' + # can be used but does nothing
       '</form>')(scope)
     form = scope.form
 
@@ -62,12 +61,6 @@ describe 'Directive: iban', ->
     scope.$digest()
     expect(scope.iban).toEqual undefined
     expect(form.iban.$valid).toBe false
-
-  it 'invalidcountry should fail with invalid country code', ->
-    form.invalidcountry.$setViewValue 'NL91 ABNA 0417 1643 00'
-    scope.$digest()
-    expect(scope.invalidcountry).toEqual undefined
-    expect(form.invalidcountry.$valid).toBe false
 
   it 'country should pass with valid IBAN', ->
     form.country.$setViewValue 'NL91 ABNA 0417 1643 00'
