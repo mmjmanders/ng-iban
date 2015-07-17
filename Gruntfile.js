@@ -79,6 +79,17 @@ module.exports = function (grunt) {
       }
     },
 
+    browserify: {
+      dist: {
+        options: {
+          transform: ['debowerify']
+        },
+        files: {
+          '.tmp/ng-iban.js': '.tmp/ng-iban.js'
+        }
+      }
+    },
+
     karma: {
       unit: {
         configFile: 'test/karma.conf.coffee',
@@ -90,6 +101,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test', [
     'clean:tmp',
     'coffee',
+    'browserify',
     'connect:test',
     'karma'
   ]);
@@ -100,4 +112,4 @@ module.exports = function (grunt) {
     'ngAnnotate',
     'uglify'
   ]);
-}
+};

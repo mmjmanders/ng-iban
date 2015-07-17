@@ -1,10 +1,7 @@
-box: wercker/nodejs
+box: olger/box-yeoman
 build:
   steps:
     - npm-install
-    - npm-install:
-        options: bower
-    - plasticine/bower-install@0.0.4:
-        tasks: bower-install
-    - wercker/grunt@1.0.0:
-        tasks: test
+    - olger/yeoman-bower-install
+    - grunt:
+        tasks: default
