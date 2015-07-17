@@ -21,12 +21,10 @@
           }
         };
         isValidIban = function(value) {
-          var A, Z, iban;
+          var iban;
           if (!(attrs.required || value)) {
             return true;
           }
-          A = 'A'.charCodeAt(0);
-          Z = 'Z'.charCodeAt(0);
           iban = parseIban(value);
           return self.IBAN.isValid(iban);
         };
