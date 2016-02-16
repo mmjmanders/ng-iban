@@ -11,7 +11,7 @@ module.exports = function (grunt) {
   grunt.initConfig({
 
     clean: {
-      tmp: ['.tmp'],
+      tmp: ['lib'],
       dist: ['dist']
     },
 
@@ -20,16 +20,7 @@ module.exports = function (grunt) {
         files: [{
           cwd: 'src',
           src: '**/*.coffee',
-          dest: '.tmp',
-          expand: true,
-          ext: '.js'
-        }]
-      },
-      test: {
-        files: [{
-          cwd: 'test/spec',
-          src: '**/*.coffee',
-          dest: '.tmp/spec',
+          dest: 'lib',
           expand: true,
           ext: '.js'
         }]
@@ -38,12 +29,9 @@ module.exports = function (grunt) {
 
     ngAnnotate: {
       dist: {
-        files: [{
-          cwd: '.tmp',
-          src: '*.js',
-          dest: 'dist',
-          expand: true
-        }]
+        files: {
+          'dist/ng-iban.min.js': 'dist/ng-iban.js'
+        }
       }
     },
 
@@ -61,7 +49,7 @@ module.exports = function (grunt) {
           transform: ['debowerify']
         },
         files: {
-          '.tmp/ng-iban.js': '.tmp/ng-iban.js'
+          'dist/ng-iban.js': 'lib/ng-iban.js'
         }
       }
     },

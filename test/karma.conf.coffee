@@ -13,7 +13,7 @@ module.exports = (config) ->
     files: [
       'bower_components/angular/angular.js'
       'bower_components/angular-mocks/angular-mocks.js'
-      '.tmp/**/*.js'
+      'dist/**/*.js'
       'test/spec/**/*.coffee'
     ],
 
