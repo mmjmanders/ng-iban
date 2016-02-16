@@ -1,8 +1,6 @@
 'use strict'
 
-@IBAN = require 'iban'
-
-self = @
+IBAN = require 'iban'
 
 angular
   .module 'mm.iban', ['ng']
@@ -17,7 +15,7 @@ angular
         return true if not(attrs.required or value)
 
         iban = parseIban(value)
-        self.IBAN.isValid iban
+        IBAN.isValid iban
 
       ctrl.$parsers.unshift (viewValue) ->
         if viewValue?

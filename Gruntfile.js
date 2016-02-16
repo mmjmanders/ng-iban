@@ -45,9 +45,7 @@ module.exports = function (grunt) {
 
     browserify: {
       dist: {
-        options: {
-          transform: ['debowerify']
-        },
+        options: {},
         files: {
           'dist/ng-iban.js': 'lib/ng-iban.js'
         }
