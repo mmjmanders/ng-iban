@@ -15,30 +15,6 @@ module.exports = function (grunt) {
       dist: ['dist']
     },
 
-    connect: {
-      options: {
-        port: grunt.option('port') || 9000,
-        // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'localhost',
-        livereload: 35729
-      },
-      test: {
-        options: {
-          port: 9001,
-          middleware: function (connect) {
-            return [
-              connect.static('.tmp'),
-              connect.static('test'),
-              connect().use(
-                '/bower_components',
-                connect.static('./bower_components')
-              )
-            ];
-          }
-        }
-      }
-    },
-
     coffee: {
       src: {
         files: [{
@@ -102,7 +78,6 @@ module.exports = function (grunt) {
     'clean:tmp',
     'coffee',
     'browserify',
-    'connect:test',
     'karma'
   ]);
 
