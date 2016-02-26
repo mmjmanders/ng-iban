@@ -8,18 +8,23 @@ image::https://app.wercker.com/status/eb4337041c62e162c5dd7af43122647c/m[title="
 The goal is to provide an easy way to validate an input field as an IBAN number with https://angularjs.org/[AngularJS].
 From version `0.4.0` the module uses https://github.com/arhs/iban.js[iban.js] for validation.
 
-== Usage
-First add
-
-* `AngularJS`
-* `ng-iban`
-
-to your HTML file.
-
-Make sure you require `mm.iban` as a dependency of your AngularJS module.
-
 == Installation
+
+=== Bower
+
 `bower install ng-iban`
+
+=== NPM
+
+`npm install ng-iban`
+
+=== Other
+
+Download file `dist/ng-iban.mni.js`.
+
+== Usage
+
+Add `mm.iban` as a dependency of your AngularJS module.
 
 === directive
 [source,html]

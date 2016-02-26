@@ -11,32 +11,8 @@ module.exports = function (grunt) {
   grunt.initConfig({
 
     clean: {
-      tmp: ['.tmp'],
+      tmp: ['lib'],
       dist: ['dist']
-    },
-
-    connect: {
-      options: {
-        port: grunt.option('port') || 9000,
-        // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'localhost',
-        livereload: 35729
-      },
-      test: {
-        options: {
-          port: 9001,
-          middleware: function (connect) {
-            return [
-              connect.static('.tmp'),
-              connect.static('test'),
-              connect().use(
-                '/bower_components',
-                connect.static('./bower_components')
-              )
-            ];
-          }
-        }
-      }
     },
 
     coffee: {
@@ -44,16 +20,7 @@ module.exports = function (grunt) {
         files: [{
           cwd: 'src',
           src: '**/*.coffee',
-          dest: '.tmp',
-          expand: true,
-          ext: '.js'
-        }]
-      },
-      test: {
-        files: [{
-          cwd: 'test/spec',
-          src: '**/*.coffee',
-          dest: '.tmp/spec',
+          dest: 'lib',
           expand: true,
           ext: '.js'
         }]
@@ -62,12 +29,9 @@ module.exports = function (grunt) {
 
     ngAnnotate: {
       dist: {
-        files: [{
-          cwd: '.tmp',
-          src: '*.js',
-          dest: 'dist',
-          expand: true
-        }]
+        files: {
+          'dist/ng-iban.min.js': 'dist/ng-iban.js'
+        }
       }
     },
 
@@ -81,11 +45,9 @@ module.exports = function (grunt) {
 
     browserify: {
       dist: {
-        options: {
-          transform: ['debowerify']
-        },
+        options: {},
         files: {
-          '.tmp/ng-iban.js': '.tmp/ng-iban.js'
+          'dist/ng-iban.js': 'lib/ng-iban.js'
         }
       }
     },
@@ -102,7 +64,6 @@ module.exports = function (grunt) {
     'clean:tmp',
     'coffee',
     'browserify',
-    'connect:test',
     'karma'
   ]);
 

@@ -1,0 +1,10 @@
+dist/
+src/
+test/
+Gruntfile.js
+LICENSE
+wercker.yml
+.travis.yml
+.editorconfig
+.npmignore
+bower.json
