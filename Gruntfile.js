@@ -11,6 +11,9 @@ module.exports = function (grunt) {
   grunt.initConfig({
 
     clean: {
+      options: {
+        force: true
+      },
       tmp: ['lib'],
       dist: ['dist']
     },

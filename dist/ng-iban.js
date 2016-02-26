@@ -1,11 +1,9 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function() {
   'use strict';
-  var self;
+  var IBAN;
 
-  this.IBAN = require("./..\\bower_components\\iban\\iban.js");
-
-  self = this;
+  IBAN = require('iban');
 
   angular.module('mm.iban', ['ng']).directive('ngIban', function() {
     return {
@@ -26,7 +24,7 @@
             return true;
           }
           iban = parseIban(value);
-          return self.IBAN.isValid(iban);
+          return IBAN.isValid(iban);
         };
         ctrl.$parsers.unshift(function(viewValue) {
           var parsed, valid;
@@ -67,8 +65,19 @@
 
 }).call(this);
 
-},{"./..\\bower_components\\iban\\iban.js":2}],2:[function(require,module,exports){
-(function(exports){
+},{"iban":2}],2:[function(require,module,exports){
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['exports'], factory);
+    } else if (typeof exports === 'object' && typeof exports.nodeName !== 'string') {
+        // CommonJS
+        factory(exports);
+    } else {
+        // Browser globals
+        factory(root.IBAN = {});
+    }
+}(this, function(exports){
 
     // Array.prototype.map polyfill
     // code from https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array/map
@@ -183,7 +192,7 @@
      *
      * @param countryCode the code of the country
      * @param length the length of the IBAN
-     * @param structure the structure of the undernying BBAN (for validation and formatting)
+     * @param structure the structure of the underlying BBAN (for validation and formatting)
      * @param example an example valid IBAN
      * @constructor
      */
@@ -301,12 +310,13 @@
     addSpecification(new Specification("KW", 30, "U04A22",             "KW81CBKU0000000000001234560101"));
     addSpecification(new Specification("KZ", 20, "F03A13",             "KZ86125KZT5004100100"));
     addSpecification(new Specification("LB", 28, "F04A20",             "LB62099900000001001901229114"));
+    addSpecification(new Specification("LC", 32, "U04F24",             "LC07HEMM000100010012001200013015"));
     addSpecification(new Specification("LI", 21, "F05A12",             "LI21088100002324013AA"));
     addSpecification(new Specification("LT", 20, "F05F11",             "LT121000011101001000"));
     addSpecification(new Specification("LU", 20, "F03A13",             "LU280019400644750000"));
     addSpecification(new Specification("LV", 21, "U04A13",             "LV80BANK0000435195001"));
     addSpecification(new Specification("MC", 27, "F05F05A11F02",       "MC5811222000010123456789030"));
-    addSpecification(new Specification("MD", 24, "U02F18",             "MD24AG000225100013104168"));
+    addSpecification(new Specification("MD", 24, "U02A18",             "MD24AG000225100013104168"));
     addSpecification(new Specification("ME", 22, "F03F13F02",          "ME25505000012345678951"));
     addSpecification(new Specification("MK", 19, "F03A10F02",          "MK07250120000058984"));
     addSpecification(new Specification("MR", 27, "F05F05F11F02",       "MR1300020001010000123456753"));
@@ -325,9 +335,12 @@
     addSpecification(new Specification("SI", 19, "F05F08F02",          "SI56263300012039086"));
     addSpecification(new Specification("SK", 24, "F04F06F10",          "SK3112000000198742637541"));
     addSpecification(new Specification("SM", 27, "U01F05F05A12",       "SM86U0322509800000000270100"));
+    addSpecification(new Specification("ST", 25, "F08F11F02",          "ST68000100010051845310112"));
+    addSpecification(new Specification("TL", 23, "F03F14F02",          "TL380080012345678910157"));
     addSpecification(new Specification("TN", 24, "F02F03F13F02",       "TN5910006035183598478831"));
-    addSpecification(new Specification("TR", 26, "F05A01A16",          "TR330006100519786457841326"));
+    addSpecification(new Specification("TR", 26, "F05F01A16",          "TR330006100519786457841326"));
     addSpecification(new Specification("VG", 24, "U04F16",             "VG96VPVG0000012345678901"));
+    addSpecification(new Specification("XK", 20, "F04F10F02",          "XK051212012345678906"));
 
     // Angola
     addSpecification(new Specification("AO", 25, "F21",                "AO69123456789012345678901"));
@@ -467,6 +480,6 @@
      */
     exports.countries = countries;
 
-})(typeof exports == 'undefined' ? this.IBAN = {} : exports);
+}));
 
 },{}]},{},[1]);
