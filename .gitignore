@@ -1,5 +1,4 @@
 *.log
 .tmp
 node_modules
-lib
 bower_components
