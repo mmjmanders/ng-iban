@@ -7,4 +7,3 @@ test/
 src/
 bower.json
 webpack.config.js
-dist/
