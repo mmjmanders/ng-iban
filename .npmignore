@@ -3,6 +3,5 @@ bower_components/
 test/
 src/
 bower.json
-wercker.yml
 webpack.config.js
 dist/

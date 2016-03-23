@@ -2,8 +2,6 @@
 
 image::https://travis-ci.org/mmjmanders/ng-iban.svg?branch=master[title="travis status", alt="travis status", link="https://travis-ci.org/mmjmanders/ng-iban"]
 
-image::https://app.wercker.com/status/eb4337041c62e162c5dd7af43122647c/m[title="wercker status", alt="wercker status", link="https://app.wercker.com/project/bykey/eb4337041c62e162c5dd7af43122647c"]
-
 = ng-iban - validate input fields as IBAN
 The goal is to provide an easy way to validate an input field as an IBAN number with https://angularjs.org/[AngularJS].
 From version `0.4.0` the module uses https://github.com/arhs/iban.js[iban.js] for validation.
