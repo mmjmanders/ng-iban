@@ -1,4 +1,7 @@
 **/.*
+*.iml
+*.ipr
+*.iws
 bower_components/
 test/
 src/
