@@ -1,6 +1,6 @@
 'use strict'
 
-IBAN = require 'iban'
+`import * as IBAN from 'iban'`
 
 angular
   .module 'mm.iban', ['ng']

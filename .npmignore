@@ -1,10 +1,8 @@
-dist/
-src/
+**/.*
+bower_components/
 test/
-Gruntfile.js
-LICENSE
-wercker.yml
-.travis.yml
-.editorconfig
-.npmignore
+src/
 bower.json
+wercker.yml
+webpack.config.js
+dist/

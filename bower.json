@@ -1,6 +1,6 @@
 {
   "name": "ng-iban",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "authors": [
     "Mark Manders <mmjmanders@gmail.com>"
   ],
@@ -18,7 +18,9 @@
     "test",
     "src",
     "package.json",
-    "Gruntfile.js"
+    "wercker.yml",
+    "webpack.config.js",
+    "lib"
   ],
   "dependencies": {
     "angular": ">=1 <2"
