@@ -17,25 +17,7 @@ angular
         iban = parseIban(value)
         IBAN.isValid iban
 
-      ctrl.$parsers.unshift (viewValue) ->
-        if viewValue?
-          valid = isValidIban viewValue
-          ctrl.$setValidity 'iban', valid
-          if valid
-            parsed = parseIban viewValue
-            if parsed isnt viewValue
-              ctrl.$setViewValue parsed
-              ctrl.$render()
-            parsed
-          else undefined
+      ctrl.$validators.ngIban = (modelValue) ->
+        isValidIban modelValue
 
-      ctrl.$formatters.unshift (modelValue) ->
-        if modelValue?
-          valid = isValidIban modelValue
-          ctrl.$setValidity 'iban', valid
-          if valid
-            parsed = parseIban modelValue
-            if parsed isnt modelValue
-              scope[attrs.ngModel] = parsed
-            parsed
-          else modelValue
+      return
