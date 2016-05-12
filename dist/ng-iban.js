@@ -74,11 +74,13 @@
 	        iban = parseIban(value);
 	        return IBAN.isValid(iban);
 	      };
+	      ctrl.$validators.ngIban = function (modelValue) {
+	        return isValidIban(modelValue);
+	      };
 	      ctrl.$parsers.unshift(function (viewValue) {
 	        var parsed, valid;
 	        if (viewValue != null) {
 	          valid = isValidIban(viewValue);
-	          ctrl.$setValidity('iban', valid);
 	          if (valid) {
 	            parsed = parseIban(viewValue);
 	            if (parsed !== viewValue) {
@@ -87,15 +89,14 @@
 	            }
 	            return parsed;
 	          } else {
-	            return void 0;
+	            return viewValue;
 	          }
 	        }
 	      });
-	      return ctrl.$formatters.unshift(function (modelValue) {
+	      ctrl.$formatters.unshift(function (modelValue) {
 	        var parsed, valid;
 	        if (modelValue != null) {
 	          valid = isValidIban(modelValue);
-	          ctrl.$setValidity('iban', valid);
 	          if (valid) {
 	            parsed = parseIban(modelValue);
 	            if (parsed !== modelValue) {
