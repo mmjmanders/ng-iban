@@ -31,3 +31,11 @@ Add `mm.iban` as a dependency of your AngularJS module.
 ----
 
 To use this directive the `ngModel` directive must also be used because this directive depends on it.
+
+=== filter
+[source,html]
+----
+IBAN: {{ string | iban:separator }}
+----
+
+The filter converts a given IBAN to it's human-friendly represantation. The separator defaults to a single space.
