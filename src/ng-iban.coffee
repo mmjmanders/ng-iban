@@ -43,3 +43,18 @@ angular
           else modelValue
 
       return
+
+  .filter 'iban', ->
+    (string, separator) ->
+      parseIban = (value) ->
+        if value? then value.toUpperCase().replace /\s/g, '' else undefined
+
+      isValidIban = (value) ->
+        iban = parseIban(value)
+        IBAN.isValid iban
+
+      valid = isValidIban string
+      if valid
+        IBAN.printFormat string, separator
+      else
+        string
