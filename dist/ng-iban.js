@@ -108,6 +108,28 @@
 	      });
 	    }
 	  };
+	}).filter('iban', function () {
+	  return function (string, separator) {
+	    var isValidIban, parseIban, valid;
+	    parseIban = function parseIban(value) {
+	      if (value != null) {
+	        return value.toUpperCase().replace(/\s/g, '');
+	      } else {
+	        return void 0;
+	      }
+	    };
+	    isValidIban = function isValidIban(value) {
+	      var iban;
+	      iban = parseIban(value);
+	      return IBAN.isValid(iban);
+	    };
+	    valid = isValidIban(string);
+	    if (valid) {
+	      return IBAN.printFormat(string, separator);
+	    } else {
+	      return string;
+	    }
+	  };
 	});
 
 /***/ },
