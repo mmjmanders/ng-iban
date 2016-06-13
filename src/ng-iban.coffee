@@ -7,6 +7,8 @@ angular
   .directive 'ngIban', ->
     restrict: 'A'
     require: 'ngModel'
+    scope:
+      ngModel: '='
     link: (scope, elem, attrs, ctrl) ->
       parseIban = (value) ->
         if value? then value.toUpperCase().replace /\s/g, '' else undefined
@@ -38,7 +40,7 @@ angular
           if valid
             parsed = parseIban modelValue
             if parsed isnt modelValue
-              scope[attrs.ngModel] = parsed
+              scope.ngModel = parsed
             parsed
           else modelValue
 
