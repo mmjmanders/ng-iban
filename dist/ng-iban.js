@@ -55,6 +55,9 @@
 	  return {
 	    restrict: 'A',
 	    require: 'ngModel',
+	    scope: {
+	      ngModel: '='
+	    },
 	    link: function link(scope, elem, attrs, ctrl) {
 	      var isValidIban, parseIban;
 	      parseIban = function parseIban(value) {
@@ -76,13 +79,14 @@
 	        return isValidIban(modelValue);
 	      };
 	      ctrl.$parsers.unshift(function (viewValue) {
-	        var parsed, valid;
+	        var parsed, pretty, valid;
 	        if (viewValue != null) {
 	          valid = isValidIban(viewValue);
 	          if (valid) {
 	            parsed = parseIban(viewValue);
-	            if (parsed !== viewValue) {
-	              ctrl.$setViewValue(parsed);
+	            pretty = IBAN.printFormat(parsed);
+	            if (pretty !== viewValue) {
+	              ctrl.$setViewValue(pretty);
 	              ctrl.$render();
 	            }
 	            return parsed;
@@ -92,15 +96,15 @@
 	        }
 	      });
 	      ctrl.$formatters.unshift(function (modelValue) {
-	        var parsed, valid;
+	        var parsed, pretty, valid;
 	        if (modelValue != null) {
 	          valid = isValidIban(modelValue);
 	          if (valid) {
 	            parsed = parseIban(modelValue);
 	            if (parsed !== modelValue) {
-	              scope[attrs.ngModel] = parsed;
+	              scope.ngModel = parsed;
 	            }
-	            return parsed;
+	            return pretty = IBAN.printFormat(parsed);
 	          } else {
 	            return modelValue;
 	          }
