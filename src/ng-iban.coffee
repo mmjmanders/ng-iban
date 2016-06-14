@@ -26,9 +26,10 @@ angular
         if viewValue?
           valid = isValidIban viewValue
           if valid
-            parsed = parseIban viewValue
-            if parsed isnt viewValue
-              ctrl.$setViewValue parsed
+            parsed = parseIban viewValue # This becomes the $modelValue
+            pretty = IBAN.printFormat parsed # This the $viewValue
+            if pretty isnt viewValue
+              ctrl.$setViewValue pretty
               ctrl.$render()
             parsed
           else
@@ -38,10 +39,10 @@ angular
         if modelValue?
           valid = isValidIban modelValue
           if valid
-            parsed = parseIban modelValue
+            parsed = parseIban modelValue # This becomes the $modelValue
             if parsed isnt modelValue
               scope.ngModel = parsed
-            parsed
+            pretty = IBAN.printFormat parsed # This the $viewValue
           else modelValue
 
       return
