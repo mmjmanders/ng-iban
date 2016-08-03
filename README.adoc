@@ -38,4 +38,4 @@ To use this directive the `ngModel` directive must also be used because this dir
 IBAN: {{ string | iban:separator }}
 ----
 
-The filter converts a given IBAN to it's human-friendly represantation. The separator defaults to a single space.
+The filter converts a given IBAN to it's human-friendly representation. The separator defaults to a single space.
