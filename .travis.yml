@@ -1,8 +1,12 @@
-sudo: false
 language: node_js
 node_js:
-  - "0.12"
-  - "0.11"
-  - "0.10"
-  - "4"
-  - "5"
+- '6'
+cache: yarn
+deploy:
+  provider: npm
+  email: mmjmanders@gmail.com
+  api_key:
+    secure: TC+pm8G7ljmI5TBq7M+rRakIMJ705F0bKc2g1fnNhQMu6hBvlLO1w0CNIk5vKsMjW+mCme4Ek8k0wKXkki8s3BDwjKJaHG8nYU/YPKnSf9C5QrA+t4pD/UIV21CTi09MLoPScKcYaj2gWpMmPF5InnZs3NkrUDNXiz0HA2ifRho=
+  on:
+    tags: true
+    repo: mmjmanders/ng-iban
