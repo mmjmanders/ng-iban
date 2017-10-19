@@ -96,3 +96,10 @@ describe 'Directive: iban', ->
     expect(scope.iban).toEqual 'NL 90AB NA04 1716 4300'
     expect(form.iban.$viewValue).toEqual 'NL 90AB NA04 1716 4300'
     expect(form.iban.$valid).toBe false
+
+  it 'model updates to electronic format', ->
+    scope.iban = 'NL-91AB-NA04-1716-4300'
+    scope.$digest()
+    expect(scope.iban).toEqual 'NL91ABNA0417164300'
+    expect(form.iban.$viewValue).toEqual 'NL91 ABNA 0417 1643 00'
+    expect(form.iban.$valid).toBe true

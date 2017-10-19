@@ -11,7 +11,7 @@ angular
       ngModel: '='
     link: (scope, elem, attrs, ctrl) ->
       parseIban = (value) ->
-        if value? then value.toUpperCase().replace /\s/g, '' else undefined
+        if value? then IBAN.electronicFormat(value) else undefined
 
       isValidIban = (value) ->
         return true if not(attrs.required or value)
