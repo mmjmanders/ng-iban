@@ -32,7 +32,7 @@
     "karma-jasmine": "^0.3.7",
     "karma-phantomjs-launcher": "^1.0.0",
     "phantomjs-polyfill": "^0.0.2",
-    "phantomjs-prebuilt": "^2.1.4",
+    "phantomjs-prebuilt": "2.1.15",
     "rimraf": "^2.5.2",
     "webpack": "^1.12.14"
   },
