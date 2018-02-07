@@ -38,6 +38,6 @@
   },
   "dependencies": {
     "angular": ">=1 <2",
-    "iban": "0.0.6"
+    "iban": "0.0.10"
   }
 }
