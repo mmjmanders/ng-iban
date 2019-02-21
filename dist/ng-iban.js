@@ -430,6 +430,7 @@
 	    addSpecification(new Specification("TN", 24, "F02F03F13F02",       "TN5910006035183598478831"));
 	    addSpecification(new Specification("TR", 26, "F05F01A16",          "TR330006100519786457841326"));
 	    addSpecification(new Specification("UA", 29, "F25",                "UA511234567890123456789012345"));
+	    addSpecification(new Specification("VA", 22, "F18",                "VA59001123000012345678"));
 	    addSpecification(new Specification("VG", 24, "U04F16",             "VG96VPVG0000012345678901"));
 	    addSpecification(new Specification("XK", 20, "F04F10F02",          "XK051212012345678906"));
 
@@ -445,7 +446,7 @@
 	    // Benin
 	    addSpecification(new Specification("BJ", 28, "F24",                "BJ39123456789012345678901234"));
 	    // Ivory
-	    addSpecification(new Specification("CI", 28, "U01F23",             "CI17A12345678901234567890123"));
+	    addSpecification(new Specification("CI", 28, "U02F22",             "CI70CI1234567890123456789012"));
 	    // Cameron
 	    addSpecification(new Specification("CM", 27, "F23",                "CM9012345678901234567890123"));
 	    // Cape Verde
