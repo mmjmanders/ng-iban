@@ -90,6 +90,13 @@ describe 'Directive: iban', ->
     expect(form.iban.$viewValue).toEqual 'NL91 ABNA 0417 1643 00'
     expect(form.iban.$valid).toBe true
 
+  it 'model updates to valid new vatican IBAN', ->
+    scope.iban = 'VA59 0011 2300 0012 3456 78'
+    scope.$digest()
+    expect(scope.iban).toEqual 'VA59001123000012345678'
+    expect(form.iban.$viewValue).toEqual 'VA59 0011 2300 0012 3456 78'
+    expect(form.iban.$valid).toBe true
+
   it 'model updates to invalid IBAN', ->
     scope.iban = 'NL 90AB NA04 1716 4300'
     scope.$digest()
