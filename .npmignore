@@ -3,7 +3,9 @@
 *.ipr
 *.iws
 bower_components/
+dist/
 test/
 src/
 bower.json
 webpack.config.js
+.github/

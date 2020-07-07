@@ -1,13 +1,14 @@
 {
   "name": "ng-iban",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "description": "IBAN directive for AngularJS",
   "main": "./lib/ng-iban.js",
   "scripts": {
     "clean": "rimraf lib dist",
     "coffee": "coffee -c -b -o ./lib ./src/ng-iban.coffee",
     "webpack": "webpack --progress --colors",
-    "test": "npm run clean && npm run coffee && npm run webpack && karma start ./test/karma.conf.coffee"
+    "test": "npm run clean && npm run coffee && npm run webpack && karma start ./test/karma.conf.coffee",
+    "postinstall": "node -e \"try { require('fs').symlinkSync(require('path').resolve('node_modules/@bower_components'), 'bower_components', 'junction') } catch (e) { }\""
   },
   "keywords": [
     "angular",
@@ -38,6 +39,10 @@
   },
   "dependencies": {
     "angular": ">=1 <2",
-    "iban": "0.0.12"
+    "iban": "0.0.14",
+    "@bower_components/angular": "angular/bower-angular#>=1 <2"
+  },
+  "engines": {
+    "yarn": ">= 1.0.0"
   }
 }
