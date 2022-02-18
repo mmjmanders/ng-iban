@@ -1,3 +1,8 @@
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
+# DEPRECATED
+This package isn't actively maintained since [AngularJS](https://angularjs.org) isn't being maintained anymore
+
 # ng-iban - validate input fields as IBAN
 The goal is to provide an easy way to validate an input field as an IBAN number with [AngularJS](https://angularjs.org/).
 From version `0.4.0` the module uses [iban.js](https://github.com/arhs/iban.js) for validation.
